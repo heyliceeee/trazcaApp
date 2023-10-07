@@ -13,14 +13,6 @@ export default function App() {
 
   const [hidePassword, setHidePassword] = useState(true);
 
-  const updatePasswordState = ({password}) => {
-    setPassword(password);
-  }
-
-  const updateConfirmPasswordState = ({confirmPassword}) => {
-    setPassword(confirmPassword);
-  }
-
 
   return (
     <View style={styles.container}>
@@ -61,7 +53,7 @@ export default function App() {
             secureTextEntry={true}
             numberOfLines={1}
             returnKeyType='next'
-            onChangeText={password => updatePasswordState({password})}
+            onChangeText={password => setPassword({password})}
           />
 
           <Icon style={styles.inputRightIcon} name='eyeo' type='antdesign' color='#323232' size={16} />
@@ -74,7 +66,7 @@ export default function App() {
             secureTextEntry={true}
             numberOfLines={1}
             returnKeyType='next'
-            onChangeText={confirmPassword => updateConfirmPasswordState({confirmPassword})}
+            onChangeText={confirmPassword => setConfirmPassword({confirmPassword})}
           />
 
           <Icon style={styles.inputRightIcon} name='eyeo' type='antdesign' color='#323232' size={16} />
