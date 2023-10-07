@@ -1,6 +1,7 @@
 import { Icon } from '@rneui/themed';
 import { useState } from 'react';
-import { StyleSheet, View, Image, ImageBackground, TextInput } from 'react-native';
+import { StyleSheet, View, Image, ImageBackground, TextInput} from 'react-native';
+
 
 const image = {uri: 'https://images.unsplash.com/photo-1596138641000-42fda7eeb97f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80'} ;
 
@@ -12,6 +13,7 @@ export default function App() {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const [hidePassword, setHidePassword] = useState(true);
+  const [hideConfirmPassword, setHideConfirmPassword] = useState(true);
 
 
   return (
@@ -50,26 +52,26 @@ export default function App() {
           <Icon style={styles.inputLeftIcon} name='lock' type='antdesign' color='#323232' size={16} />
 
           <TextInput placeholder='Introduza a sua palavra-passe' style={styles.input} 
-            secureTextEntry={true}
+            secureTextEntry={hidePassword ? true : false}
             numberOfLines={1}
             returnKeyType='next'
             onChangeText={password => setPassword({password})}
           />
 
-          <Icon style={styles.inputRightIcon} name='eyeo' type='antdesign' color='#323232' size={16} />
+          <Icon style={styles.inputRightIcon} name={hidePassword ? 'eye-with-line' : 'eye'} type='entypo' color='#323232' size={16} onPress={() => setHidePassword(!hidePassword)}/>
         </View>
 
         <View style={styles.inputContainer}>
           <Icon style={styles.inputLeftIcon} name='lock' type='antdesign' color='#323232' size={16} />
 
           <TextInput placeholder='Confirme a sua palavra-passe' style={styles.input} 
-            secureTextEntry={true}
+            secureTextEntry={hideConfirmPassword ? true : false}
             numberOfLines={1}
             returnKeyType='next'
             onChangeText={confirmPassword => setConfirmPassword({confirmPassword})}
           />
 
-          <Icon style={styles.inputRightIcon} name='eyeo' type='antdesign' color='#323232' size={16} />
+          <Icon style={styles.inputRightIcon} name={hideConfirmPassword ? 'eye-with-line' : 'eye'} type='entypo' color='#323232' size={16} onPress={() => setHideConfirmPassword(!hideConfirmPassword)}/>
         </View>
        
       </ImageBackground>
