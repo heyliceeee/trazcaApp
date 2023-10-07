@@ -1,6 +1,6 @@
 import { Icon } from '@rneui/themed';
 import { useState } from 'react';
-import { StyleSheet, View, Image, ImageBackground, TextInput} from 'react-native';
+import { StyleSheet, View, Image, ImageBackground, TextInput, TouchableHighlight, Text} from 'react-native';
 
 
 const image = {uri: 'https://images.unsplash.com/photo-1596138641000-42fda7eeb97f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80'} ;
@@ -14,6 +14,14 @@ export default function App() {
 
   const [hidePassword, setHidePassword] = useState(true);
   const [hideConfirmPassword, setHideConfirmPassword] = useState(true);
+
+  const handleSubmit = () => {
+    console.log(email, phoneNumber, password, confirmPassword);
+  }
+
+  const goLoginPage = () => {
+    console.log("go login page");
+  }
 
 
   return (
@@ -34,6 +42,8 @@ export default function App() {
             placeholderTextColor="#A1A1A1"
             numberOfLines={1}
             returnKeyType='next'
+            value={email}
+            onChangeText={(email) => setEmail({email})}
           />
         </View>
 
@@ -45,6 +55,8 @@ export default function App() {
             numberOfLines={1}
             returnKeyType='next'
             keyboardType='numeric'
+            value={phoneNumber}
+            onChangeText={(phoneNumber) => setPhoneNumber({phoneNumber})}
           />
         </View>
 
@@ -52,28 +64,43 @@ export default function App() {
           <Icon style={styles.inputLeftIcon} name='lock' type='antdesign' color='#323232' size={16} />
 
           <TextInput placeholder='Introduza a sua palavra-passe' style={styles.input} 
+            placeholderTextColor="#A1A1A1"
             secureTextEntry={hidePassword ? true : false}
             numberOfLines={1}
             returnKeyType='next'
+            value={password}
             onChangeText={password => setPassword({password})}
           />
 
-          <Icon style={styles.inputRightIcon} name={hidePassword ? 'eye-with-line' : 'eye'} type='entypo' color='#323232' size={16} onPress={() => setHidePassword(!hidePassword)}/>
+          <Icon style={styles.inputRightIcon} name={hidePassword ? 'eye-with-line' : 'eye'} type='entypo' color='#323232' size={16} 
+            onPress={() => setHidePassword(!hidePassword)}
+          />
         </View>
 
         <View style={styles.inputContainer}>
           <Icon style={styles.inputLeftIcon} name='lock' type='antdesign' color='#323232' size={16} />
 
           <TextInput placeholder='Confirme a sua palavra-passe' style={styles.input} 
+            placeholderTextColor="#A1A1A1"
             secureTextEntry={hideConfirmPassword ? true : false}
             numberOfLines={1}
             returnKeyType='next'
+            value={confirmPassword}
             onChangeText={confirmPassword => setConfirmPassword({confirmPassword})}
           />
 
-          <Icon style={styles.inputRightIcon} name={hideConfirmPassword ? 'eye-with-line' : 'eye'} type='entypo' color='#323232' size={16} onPress={() => setHideConfirmPassword(!hideConfirmPassword)}/>
+          <Icon style={styles.inputRightIcon} name={hideConfirmPassword ? 'eye-with-line' : 'eye'} type='entypo' color='#323232' size={16} 
+            onPress={() => setHideConfirmPassword(!hideConfirmPassword)}
+          />
         </View>
-       
+
+        <TouchableHighlight onPress={handleSubmit} style={styles.btnCreateAccount}>
+          <Text style={styles.btnText}>Criar Conta</Text>
+        </TouchableHighlight>
+
+        <TouchableHighlight onPress={goLoginPage} style={styles.btnLogin}>
+          <Text style={styles.btnText}>Iniciar Sessão</Text>
+        </TouchableHighlight>
       </ImageBackground>
     </View>
   );
@@ -110,7 +137,8 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     paddingLeft: 5,
     paddingTop: 15,
-    marginTop: 20
+    marginTop: 20,
+    fontWeight: 'normal'
   },
 
   inputLeftIcon: {
@@ -130,84 +158,33 @@ const styles = StyleSheet.create({
   },
 
 
-
-  passwordContainer: {
-    flexDirection: 'row',
-    height:35,
+  btnCreateAccount: {
+    height: 42,
     width: 350,
+    backgroundColor: "#5fb709",
     borderBottomWidth: 1,
     borderColor: '#A1A1A1',
-    paddingBottom: 10,
-    backgroundColor: "#fff",
     borderRadius: 4,
-    paddingLeft: 5,
-    paddingTop: 10
-  },
-
-  inputPassword: {
-    flex: 1,
-    fontSize: 14
-  },
-
-
-
-  emailSection: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff'
+    justifyContent: 'center',
+    marginTop: 8
+  },
+  
+  btnText: {
+    color: "#fff",
+    fontSize: 14,
+    fontWeight: 'bold'
   },
 
-  inputEmail: {
-    //height: 43,
-    //width: 300,
-    backgroundColor: "#fff",
-    //marginTop: 21,
-    //marginBottom: 0,
+  btnLogin: {
+    height: 42,
+    width: 350,
+    backgroundColor: "#5fb709",
+    borderBottomWidth: 1,
+    borderColor: '#A1A1A1',
     borderRadius: 4,
-    flex: 1,
-    paddingTop: 10,
-    paddingRight: 10,
-    paddingBottom: 10,
-    paddingLeft: 0
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 29
   },
-
-
-
-  inputPhoneNumber: {
-    height: 43,
-    width: 300,
-    backgroundColor: "#fff",
-    marginTop: 21,
-    marginBottom: 0,
-    borderRadius: 4
-  },
-
-  inputPassword: {
-    height: 43,
-    width: 300,
-    backgroundColor: "#fff",
-    marginTop: 21,
-    borderRadius: 4
-  },
-
-  inputConfirmPassword: {
-    height: 43,
-    width: 300,
-    backgroundColor: "#fff",
-    margin: 0,
-    borderRadius: 4
-  },
-
-
-  passwordSection: {
-    flex: 1,
-    margin: 0
-  },
-
-  passwordConfirmSection: {
-    flex: 1,
-    margin: 0
-  }
 });
