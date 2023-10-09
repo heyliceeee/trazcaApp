@@ -15,8 +15,56 @@ export default function App() {
   const [hidePassword, setHidePassword] = useState(true);
   const [hideConfirmPassword, setHideConfirmPassword] = useState(true);
 
+  const [showErrorEmailInput, setShowErrorEmailInput] = useState(false);
+  const [showErrorPhoneNumberInput, setShowErrorPhoneNumberInput] = useState(false);
+  const [showErrorPasswordInput, setShowErrorPasswordInput] = useState(false);
+  const [showErrorConfirmPasswordInput, setShowErrorConfirmPasswordInput] = useState(false);
+  
+
   const handleSubmit = () => {
-    console.log(email, phoneNumber, password, confirmPassword);
+    //verificar se todos os dados são validos (e se as passwords coincidem)
+
+    //verificar se o email é válido
+    const regEmail = /(?!.*\.{2})^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([\t]*\r\n)?[\t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([\t]*\r\n)?[\t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+
+    if(email.length === 0 || regEmail.test(email) === false){
+      setShowErrorEmailInput(true);
+
+    } else if(regEmail.test(email) === true){
+      setShowErrorEmailInput(false);
+    }
+
+
+    //verificar se o n. de tel. é válido
+    const regPhoneNumber = /^(?:91|92|93|96)\s?\d\s?\d\s?\d\s?\d\s?\d\s?\d\s?\d$/;
+
+    if(phoneNumber.length === 0 || regPhoneNumber.test(phoneNumber) === false){
+      setShowErrorPhoneNumberInput(true);
+
+    } else if(regPhoneNumber.test(phoneNumber) === true){
+      setShowErrorPhoneNumberInput(false);
+    }
+
+
+    //verificar se a password é válida
+    const regPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,20}$/;
+
+    if(password.length === 0 || password.length < 8 || regPassword.test(password) === false){
+      setShowErrorPasswordInput(true);
+
+    } else if(regPassword.test(password) === true){
+      setShowErrorPasswordInput(false);
+    }
+
+    //verificar se a confirm password é válida
+    if(confirmPassword.length === 0 || confirmPassword.length < 8){
+      setShowErrorConfirmPasswordInput(true);
+
+    } else if(password == confirmPassword){
+      setShowErrorConfirmPasswordInput(false);
+    }
+
+    console.log("email: " + email, "phone: "+ phoneNumber, "pass: "+ password, "confirm pass: "+ confirmPassword);
   }
 
   const goLoginPage = () => {
@@ -30,11 +78,6 @@ export default function App() {
 
         <Image source={require("./src/assets/logo.png")} style={styles.logo}/>
 
-        {/* <Input placeholder='Introduza o seu email' errorStyle={{color: 'red'}} errorMessage='Introduza um email válido' style={styles.input}/>
-        <Input placeholder='Introduza o seu número de telemóvel' errorStyle={{color: 'red'}} errorMessage='Introduza um número de telemóvel válido'/>
-        <Input placeholder='Introduza a sua palavra-passe' errorStyle={{color: 'red'}} errorMessage='Introduza uma palavra-passe válida' secureTextEntry={true}/>
-        <Input placeholder='Confirme a sua palavra-passe' errorStyle={{color: 'red'}} errorMessage='Introduza uma palavra-passe válida' secureTextEntry={true}/> */}
-
         <View style={styles.inputContainer}>
           <Icon style={styles.inputLeftIcon} name='mail' type='antdesign' color='#323232' size={16} />
 
@@ -43,9 +86,11 @@ export default function App() {
             numberOfLines={1}
             returnKeyType='next'
             value={email}
-            onChangeText={(email) => setEmail({email})}
+            onChangeText={(email) => setEmail(email)}
           />
         </View>
+
+        { showErrorEmailInput && <Text style={styles.errorInput}>Introduza um email válido!</Text>}
 
         <View style={styles.inputContainer}>
           <Icon style={styles.inputLeftIcon} name='phone' type='antdesign' color='#323232' size={16} />
@@ -56,9 +101,11 @@ export default function App() {
             returnKeyType='next'
             keyboardType='numeric'
             value={phoneNumber}
-            onChangeText={(phoneNumber) => setPhoneNumber({phoneNumber})}
+            onChangeText={(phoneNumber) => setPhoneNumber(phoneNumber)}
           />
         </View>
+
+        { showErrorPhoneNumberInput && <Text style={styles.errorInput}>Introduza um número de telemóvel válido! (número de telemóvel português)</Text> }
 
         <View style={styles.inputContainer}>
           <Icon style={styles.inputLeftIcon} name='lock' type='antdesign' color='#323232' size={16} />
@@ -69,13 +116,15 @@ export default function App() {
             numberOfLines={1}
             returnKeyType='next'
             value={password}
-            onChangeText={password => setPassword({password})}
+            onChangeText={password => setPassword(password)}
           />
 
           <Icon style={styles.inputRightIcon} name={hidePassword ? 'eye-with-line' : 'eye'} type='entypo' color='#323232' size={16} 
             onPress={() => setHidePassword(!hidePassword)}
           />
         </View>
+
+        { showErrorPasswordInput && <Text style={styles.errorInput}>Introduza uma palavra-passe válida! (8 ou mais caracteres com pelo menos um dígito, uma letra minúscula, uma letra maiúscula e um caractere especial)</Text> }
 
         <View style={styles.inputContainer}>
           <Icon style={styles.inputLeftIcon} name='lock' type='antdesign' color='#323232' size={16} />
@@ -86,13 +135,15 @@ export default function App() {
             numberOfLines={1}
             returnKeyType='next'
             value={confirmPassword}
-            onChangeText={confirmPassword => setConfirmPassword({confirmPassword})}
+            onChangeText={confirmPassword => setConfirmPassword(confirmPassword)}
           />
 
           <Icon style={styles.inputRightIcon} name={hideConfirmPassword ? 'eye-with-line' : 'eye'} type='entypo' color='#323232' size={16} 
             onPress={() => setHideConfirmPassword(!hideConfirmPassword)}
           />
         </View>
+
+        { showErrorConfirmPasswordInput && <Text style={styles.errorInput}>Introduza uma palavra-passe válida e que coincide com a palavra passe!</Text> }
 
         <TouchableHighlight onPress={handleSubmit} style={styles.btnCreateAccount}>
           <Text style={styles.btnText}>Criar Conta</Text>
@@ -157,6 +208,15 @@ const styles = StyleSheet.create({
     marginLeft: 5
   },
 
+  errorInput: {
+    fontSize: 14,
+    marginTop: 5,
+    marginLeft: 33,
+    marginRight: 33,
+    color: "red",
+    fontWeight: 'bold'
+  },
+
 
   btnCreateAccount: {
     height: 42,
@@ -167,7 +227,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 8
+    marginTop: 10
   },
   
   btnText: {
