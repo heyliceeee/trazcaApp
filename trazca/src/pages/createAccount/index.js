@@ -10,7 +10,7 @@ import BtnForm from './components/btnForm';
 const image = {uri: 'https://images.unsplash.com/photo-1596138641000-42fda7eeb97f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80'} ;
 
 
-export default function CreateAccount() {
+export default function CreateAccount({navigation}) {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
@@ -69,10 +69,6 @@ export default function CreateAccount() {
     //console.log("email: " + email, "phone: "+ phoneNumber, "pass: "+ password, "confirm pass: "+ confirmPassword);
   }
 
-  const goLoginPage = () => {
-    console.log("go login page");
-  }
-
 
   return (
     <View style={styles.container}>
@@ -93,7 +89,7 @@ export default function CreateAccount() {
         { showErrorConfirmPasswordInput && <ErrorForm textError='Introduza uma palavra-passe válida e que coincide com a palavra passe!'/> }
 
         <BtnForm onPress={handleSubmit} style={styles.btnCreateAccount} textBtn='Criar Conta'/>
-        <BtnForm onPress={goLoginPage} style={styles.btnLogin} textBtn='Iniciar Sessão'/>
+        <BtnForm onPress={() => navigation.navigate('Login')} style={styles.btnLogin} textBtn='Iniciar Sessão'/>
       </ImageBackground>
     </View>
   );
