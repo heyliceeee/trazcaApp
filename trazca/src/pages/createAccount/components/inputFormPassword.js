@@ -9,7 +9,7 @@ export default function InputFormPassword({nameIcon, typeIcon, placeholder, keyb
 
             <TextInput placeholder={placeholder} style={styles.input} 
                 placeholderTextColor="#A1A1A1"
-                secureTextEntry={{setSecureTextEntry} ? true : false}
+                secureTextEntry={setSecureTextEntry ? true : false}
                 numberOfLines={1}
                 returnKeyType='next'
                 keyboardType={keyboardType}
@@ -17,7 +17,7 @@ export default function InputFormPassword({nameIcon, typeIcon, placeholder, keyb
                 onChangeText={setValue}
             />
 
-            <Icon style={styles.inputRightIcon} name={{setSecureTextEntry} ? 'eye-with-line' : 'eye'} type='entypo' color='#323232' size={16} 
+            <Icon style={styles.inputRightIcon} name={setSecureTextEntry ? 'eye-with-line' : 'eye'} type='entypo' color='#323232' size={16} 
               onPress={onPress}
             />
         </View>

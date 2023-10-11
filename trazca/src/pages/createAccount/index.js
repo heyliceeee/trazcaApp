@@ -1,9 +1,10 @@
-import { Icon } from '@rneui/themed';
 import { useState } from 'react';
 import { StyleSheet, View, Image, ImageBackground, TextInput, TouchableHighlight, Text} from 'react-native';
 
 import InputFormPassword from './components/inputFormPassword';
 import InputForm from './components/inputForm';
+import ErrorForm from './components/errorForm';
+import BtnForm from './components/btnForm';
 
 
 const image = {uri: 'https://images.unsplash.com/photo-1596138641000-42fda7eeb97f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80'} ;
@@ -79,82 +80,20 @@ export default function CreateAccount() {
 
         <Image source={require("../../../src/assets/logo.png")} style={styles.logo}/>
 
-        <InputForm nameIcon='mail' 
-            typeIcon='antdesign' 
-            placeholder='Introduza o seu email' 
-            keyboardType='email-address' 
-            value={email}
-            setValue={(email) => setEmail(email)}
-        />
+        <InputForm nameIcon='mail' typeIcon='antdesign' placeholder='Introduza o seu email' keyboardType='email-address' value={email} setValue={(email) => setEmail(email)} />
+        { showErrorEmailInput && <ErrorForm textError='Introduza um email válido!'/>}
 
-        { showErrorEmailInput && <Text style={styles.errorInput}>Introduza um email válido!</Text>}
+        <InputForm nameIcon='phone' typeIcon='antdesign' placeholder='Introduza o seu número de telemóvel' keyboardType='numeric' value={phoneNumber} setValue={(phoneNumber) => setPhoneNumber(phoneNumber)} />
+        { showErrorPhoneNumberInput && <ErrorForm textError='Introduza um número de telemóvel válido! (número de telemóvel português)'/>}
 
-        <InputForm nameIcon='phone' 
-            typeIcon='antdesign' 
-            placeholder='Introduza o seu número de telemóvel' 
-            keyboardType='numeric' 
-            value={phoneNumber}
-            setValue={(phoneNumber) => setPhoneNumber(phoneNumber)}
-        />
+        <InputFormPassword nameIcon='lock' typeIcon='antdesign' placeholder='Introduza a sua palavra-passe' keyboardType='default' value={password} setValue={password => setPassword(password)} setSecureTextEntry={hidePassword} onPress={() => setHidePassword(!hidePassword)} />
+        { showErrorPasswordInput && <ErrorForm textError='Introduza uma palavra-passe válida! (8 ou mais caracteres com pelo menos um dígito, uma letra minúscula, uma letra maiúscula e um caractere especial)'/> }
 
-        { showErrorPhoneNumberInput && <Text style={styles.errorInput}>Introduza um número de telemóvel válido! (número de telemóvel português)</Text> }
+        <InputFormPassword nameIcon='lock' typeIcon='antdesign' placeholder='Confirme a sua palavra-passe' keyboardType='default' value={confirmPassword} setValue={confirmPassword => setConfirmPassword(confirmPassword)} setSecureTextEntry={hideConfirmPassword} onPress={() => setHideConfirmPassword(!hideConfirmPassword)}/>
+        { showErrorConfirmPasswordInput && <ErrorForm textError='Introduza uma palavra-passe válida e que coincide com a palavra passe!'/> }
 
-        <InputFormPassword nameIcon='lock' 
-            typeIcon='antdesign' 
-            placeholder='Introduza a sua palavra-passe' 
-            keyboardType='default' 
-            value={password}
-            setValue={password => setPassword(password)}
-            setSecureTextEntry={hidePassword}
-            onPress={() => setHidePassword(!hidePassword)}
-        />
-
-
-        <View style={styles.inputContainer}>
-          <Icon style={styles.inputLeftIcon} name='lock' type='antdesign' color='#323232' size={16} />
-
-          <TextInput placeholder='Introduza a sua palavra-passe' style={styles.input} 
-            placeholderTextColor="#A1A1A1"
-            secureTextEntry={hidePassword ? true : false}
-            numberOfLines={1}
-            returnKeyType='next'
-            value={password}
-            onChangeText={password => setPassword(password)}
-          />
-
-          <Icon style={styles.inputRightIcon} name={hidePassword ? 'eye-with-line' : 'eye'} type='entypo' color='#323232' size={16} 
-            onPress={() => setHidePassword(!hidePassword)}
-          />
-        </View>
-
-        { showErrorPasswordInput && <Text style={styles.errorInput}>Introduza uma palavra-passe válida! (8 ou mais caracteres com pelo menos um dígito, uma letra minúscula, uma letra maiúscula e um caractere especial)</Text> }
-
-        <View style={styles.inputContainer}>
-          <Icon style={styles.inputLeftIcon} name='lock' type='antdesign' color='#323232' size={16} />
-
-          <TextInput placeholder='Confirme a sua palavra-passe' style={styles.input} 
-            placeholderTextColor="#A1A1A1"
-            secureTextEntry={hideConfirmPassword ? true : false}
-            numberOfLines={1}
-            returnKeyType='next'
-            value={confirmPassword}
-            onChangeText={confirmPassword => setConfirmPassword(confirmPassword)}
-          />
-
-          <Icon style={styles.inputRightIcon} name={hideConfirmPassword ? 'eye-with-line' : 'eye'} type='entypo' color='#323232' size={16} 
-            onPress={() => setHideConfirmPassword(!hideConfirmPassword)}
-          />
-        </View>
-
-        { showErrorConfirmPasswordInput && <Text style={styles.errorInput}>Introduza uma palavra-passe válida e que coincide com a palavra passe!</Text> }
-
-        <TouchableHighlight onPress={handleSubmit} style={styles.btnCreateAccount}>
-          <Text style={styles.btnText}>Criar Conta</Text>
-        </TouchableHighlight>
-
-        <TouchableHighlight onPress={goLoginPage} style={styles.btnLogin}>
-          <Text style={styles.btnText}>Iniciar Sessão</Text>
-        </TouchableHighlight>
+        <BtnForm onPress={handleSubmit} style={styles.btnCreateAccount} textBtn='Criar Conta'/>
+        <BtnForm onPress={goLoginPage} style={styles.btnLogin} textBtn='Iniciar Sessão'/>
       </ImageBackground>
     </View>
   );
@@ -179,48 +118,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
 
-
-  inputContainer: {
-    flexDirection: 'row',
-    height: 42,
-    width: 350,
-    borderBottomWidth: 1,
-    borderColor: '#A1A1A1',
-    paddingBottom: 11,
-    backgroundColor: "#fff",
-    borderRadius: 4,
-    paddingLeft: 5,
-    paddingTop: 15,
-    marginTop: 20,
-    fontWeight: 'normal'
-  },
-
-  inputLeftIcon: {
-    marginTop: -1,
-    marginLeft: 5
-  },
-
-  inputRightIcon: {
-    marginTop: -1,
-    marginRight: 10
-  },
-
-  input: {
-    flex: 1,
-    fontSize: 14,
-    marginLeft: 5
-  },
-
-  errorInput: {
-    fontSize: 14,
-    marginTop: 5,
-    marginLeft: 33,
-    marginRight: 33,
-    color: "red",
-    fontWeight: 'bold'
-  },
-
-
   btnCreateAccount: {
     height: 42,
     width: 350,
@@ -231,12 +128,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 10
-  },
-  
-  btnText: {
-    color: "#fff",
-    fontSize: 14,
-    fontWeight: 'bold'
   },
 
   btnLogin: {
@@ -249,5 +140,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 29
-  },
+  }
 });
