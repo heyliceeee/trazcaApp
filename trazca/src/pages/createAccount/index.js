@@ -67,6 +67,9 @@ export default function CreateAccount({navigation}) {
     }
 
     //console.log("email: " + email, "phone: "+ phoneNumber, "pass: "+ password, "confirm pass: "+ confirmPassword);
+    if(showErrorEmailInput == false && showErrorPasswordInput == false && showErrorConfirmPasswordInput == false && showErrorPhoneNumberInput == false){
+      navigation.navigate('Login');
+    }
   }
 
 

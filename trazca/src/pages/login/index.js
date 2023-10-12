@@ -43,6 +43,11 @@ export default function Login({navigation}){
     }
 
     //console.log("email: " + email, "phone: "+ phoneNumber, "pass: "+ password, "confirm pass: "+ confirmPassword);
+    
+    //sem erros (mas no futuro vai comparar as credenciais)
+    if(showErrorEmailInput == false && showErrorPasswordInput == false){
+      navigation.navigate('Routes', { screen: 'Home' });
+    }
   }
 
 
