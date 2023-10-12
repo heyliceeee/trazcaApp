@@ -12,7 +12,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="CreateAccount" screenOptions={{headerShown: false}}>
+      <Stack.Navigator initialRouteName="CreateAccount" screenOptions={{headerShown: false, gestureEnabled: false}}>
         <Stack.Screen name="CreateAccount" component={CreateAccount} />
         <Stack.Screen name="Login" component={Login} />
       </Stack.Navigator>
