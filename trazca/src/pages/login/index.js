@@ -47,20 +47,20 @@ export default function Login({navigation}){
 
 
     return(
-        <View style={styles.container}>
-          <ImageBackground source={image} style={styles.background}>
-            <Image source={require("../../../src/assets/logo.png")} style={styles.logo}/>
+      <View style={styles.container}>
+        <ImageBackground source={image} style={styles.background}>
+          <Image source={require("../../../src/assets/logo.png")} style={styles.logo}/>
 
-            <InputForm nameIcon='mail' typeIcon='antdesign' placeholder='Introduza o seu email' keyboardType='email-address' value={email} setValue={(email) => setEmail(email)} />
-            { showErrorEmailInput && <ErrorForm textError='Introduza um email válido!'/>}
+          <InputForm nameIcon='mail' typeIcon='antdesign' placeholder='Introduza o seu email' keyboardType='email-address' value={email} setValue={(email) => setEmail(email)} />
+          { showErrorEmailInput && <ErrorForm textError='Introduza um email válido!'/>}
 
-            <InputFormPassword nameIcon='lock' typeIcon='antdesign' placeholder='Introduza a sua palavra-passe' keyboardType='default' value={password} setValue={password => setPassword(password)} setSecureTextEntry={hidePassword} onPress={() => setHidePassword(!hidePassword)} />
+          <InputFormPassword nameIcon='lock' typeIcon='antdesign' placeholder='Introduza a sua palavra-passe' keyboardType='default' value={password} setValue={password => setPassword(password)} setSecureTextEntry={hidePassword} onPress={() => setHidePassword(!hidePassword)} />
           { showErrorPasswordInput && <ErrorForm textError='Introduza uma palavra-passe válida! (8 ou mais caracteres com pelo menos um dígito, uma letra minúscula, uma letra maiúscula e um caractere especial)'/> }
 
-          <BtnForm onPress={handleSubmit} style={styles.btnLogin} textBtn='Iniciar Sessão'/>
-          <BtnForm onPress={() => navigation.navigate('CreateAccount')} style={styles.btnCreateAccount} textBtn='Criar Conta'/>
-          </ImageBackground>
-        </View>
+        <BtnForm onPress={handleSubmit} style={styles.btnLogin} textBtn='Iniciar Sessão'/>
+        <BtnForm onPress={() => navigation.navigate('CreateAccount')} style={styles.btnCreateAccount} textBtn='Criar Conta'/>
+      </ImageBackground>
+      </View>
     );
 }
 
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center'
     },
   
-    btnCreateAccount: {
+    btnLogin: {
       height: 42,
       width: 350,
       backgroundColor: "#5fb709",
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
       marginTop: 10
     },
   
-    btnLogin: {
+    btnCreateAccount: {
       height: 42,
       width: 350,
       backgroundColor: "#5fb709",
