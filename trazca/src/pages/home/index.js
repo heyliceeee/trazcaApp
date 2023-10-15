@@ -9,18 +9,27 @@ const image = { uri: 'https://images.unsplash.com/photo-1550984754-8d1b067b0239?
 export function Home({ navigation }) {
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Promoção da semana</Text>
+            <View>
+                <Text style={styles.title}>Promoção da semana</Text>
 
-            <ImageBackground source={image} style={styles.foodContainer}>
-                <BlackOverlay />
+                <ImageBackground source={image} style={styles.foodContainer}>
+                    <BlackOverlay />
 
-                <Text style={styles.foodContainerTitle}>O BURGER MAIS TUGA CHEGOU!</Text>
-                <Text style={styles.foodContainerSubtitle}>Grande Hamburger Duplo</Text>
+                    <Text style={styles.foodContainerTitle}>O BURGER MAIS TUGA CHEGOU!</Text>
+                    <Text style={styles.foodContainerSubtitle}>Grande Hamburger Duplo</Text>
 
-                <View style={styles.inputContainer}>
-                    <Text style={styles.btn}>EU QUERO!</Text>
+                    <View style={styles.inputContainer}>
+                        <Text style={styles.btn}>EU QUERO!</Text>
+                    </View>
+                </ImageBackground>
+            </View>
+
+            <View>
+                <View>
+                    <Text style={styles.secondTitle}>Sugestão do Chef</Text>
                 </View>
-            </ImageBackground>
+
+            </View>
 
         </View>
     );
@@ -111,5 +120,11 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         color: "#fff",
         marginLeft: 5,
+    },
+
+    secondTitle: {
+        fontSize: 20,
+        fontWeight: "700",
+        marginTop: 15
     },
 });
