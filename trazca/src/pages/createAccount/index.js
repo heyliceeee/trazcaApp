@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, View, Image, ImageBackground, TextInput, TouchableHighlight, Text} from 'react-native';
+import { StyleSheet, View, Image, ImageBackground} from 'react-native';
 
 import InputFormPassword from './components/inputFormPassword';
 import InputForm from './components/inputForm';
