@@ -12,7 +12,6 @@ const Tab = createBottomTabNavigator();
 export function Routes(){
     return (
         <Tab.Navigator screenOptions={{tabBarStyle: {backgroundColor: '#5FB709'}}}>
-
             <Tab.Screen name='Home' component={Home}
                 options={{
                     headerShown: true, 

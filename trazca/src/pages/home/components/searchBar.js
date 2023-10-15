@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Icon } from "@rneui/themed";
-import { StyleSheet, TextInput, View } from "react-native";
+import { StyleSheet, TextInput, View, Platform } from "react-native";
 
 
 export default function SearchBar() {
@@ -13,12 +13,11 @@ export default function SearchBar() {
 
 
     return (
-        <View style={styles.container}>
-            <TextInput placeholder='Pesquisa a sua comida preferida...' style={styles.input}
+        <View style={styles.inputContainer}>
+            <TextInput placeholder="Pesquise a sua comida favorita..." style={styles.input}
                 placeholderTextColor="#A1A1A1"
                 numberOfLines={1}
-                returnKeyType='next'
-                keyboardType='default'
+                keyboardType='defaul'
                 value={search}
                 onChangeText={(search) => setSearch(search)}
             />
@@ -31,10 +30,9 @@ export default function SearchBar() {
 }
 
 const styles = StyleSheet.create({
-    container: {
+    inputContainer: {
         flexDirection: 'row',
         height: 42,
-        width: 350,
         borderBottomWidth: 1,
         borderColor: '#A1A1A1',
         paddingBottom: 11,
@@ -42,14 +40,31 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         paddingLeft: 5,
         paddingTop: 15,
-        marginTop: -15,
-        fontWeight: 'normal'
+        fontWeight: 'normal',
+
+        ...Platform.select({
+            ios: {
+                width: 350,
+                marginTop: -10
+            },
+
+            android: {
+                width: 390,
+                marginTop: 0
+            }
+        })
+    },
+
+    inputLeftIcon: {
+        marginTop: -1,
+        marginLeft: 5
     },
 
     input: {
         flex: 1,
         fontSize: 14,
-        marginLeft: 5
+        marginLeft: 5,
+        textAlign: 'left'
     },
 
     inputRightIcon: {
