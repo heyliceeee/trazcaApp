@@ -1,6 +1,7 @@
 import { View, StyleSheet, Text, Platform, ImageBackground } from "react-native";
 
 import { BlackOverlay } from "./components/blackOverlay";
+import FoodContainer from "./components/foodContainer";
 
 
 const image = { uri: 'https://images.unsplash.com/photo-1550984754-8d1b067b0239?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1146&q=80' };
@@ -25,8 +26,33 @@ export function Home({ navigation }) {
             </View>
 
             <View>
-                <View>
-                    <Text style={styles.secondTitle}>Sugestão do Chef</Text>
+                <View style={styles.chefContainerText}>
+                    <Text style={styles.chefContainerTitle}>Sugestão do Chef</Text>
+
+                    <View style={styles.moreContainer}>
+                        <Text style={styles.moreSubtitle}>ver todas</Text>
+                        <Text style={styles.moreSubtitle}> >></Text>
+                    </View>
+                </View>
+
+                <View style={styles.foodsContainer}>
+                    <FoodContainer img={{ uri: 'https://images.unsplash.com/photo-1618213837799-25d5552820d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1142&q=80' }}
+                        title="Pizza Crocante" subtitle="Pizza Hut" price="15€" colorStar1="#ffc90c" colorStar2="#ffc90c" colorStar3="#ffc90c" colorStar4="#ffc90c" colorStar5="#c4c4c4"
+                    />
+
+                    <FoodContainer img={{ uri: 'https://images.unsplash.com/photo-1561758033-d89a9ad46330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80' }}
+                        title="SteakHouse" subtitle="Burger King" price="5,99€" colorStar1="#ffc90c" colorStar2="#ffc90c" colorStar3="#ffc90c" colorStar4="#ffc90c" colorStar5="#ffc90c"
+                    />
+                </View>
+
+                <View style={styles.foodsContainer1}>
+                    <FoodContainer img={{ uri: 'https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80' }}
+                        title="Franguinho Frito" subtitle="KFC" price="2€" colorStar1="#ffc90c" colorStar2="#c4c4c4" colorStar3="#c4c4c4" colorStar4="#c4c4c4" colorStar5="#c4c4c4"
+                    />
+
+                    <FoodContainer img={{ uri: 'https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1115&q=80' }}
+                        title="Double CheeseBurger" subtitle="McDonald's" price="1,50€" colorStar1="#ffc90c" colorStar2="#ffc90c" colorStar3="#ffc90c" colorStar4="#ffc90c" colorStar5="#ffc90c"
+                    />
                 </View>
 
             </View>
@@ -51,7 +77,7 @@ const styles = StyleSheet.create({
     },
 
     foodContainer: {
-        borderBottomWidth: 1,
+        borderWidth: 1,
         borderColor: '#A1A1A1',
         borderRadius: 4,
         resizeMode: 'cover',
@@ -122,9 +148,42 @@ const styles = StyleSheet.create({
         marginLeft: 5,
     },
 
-    secondTitle: {
+    chefContainerText: {
+        flexDirection: 'row',
+        marginTop: 15,
+        marginBottom: 2,
+        alignItems: 'center'
+    },
+
+    chefContainerTitle: {
         fontSize: 20,
         fontWeight: "700",
-        marginTop: 15
+    },
+
+    moreContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        alignItems: 'center'
+    },
+
+    moreSubtitle: {
+        fontSize: 14,
+        fontWeight: "400",
+        color: "#5fb709"
+    },
+
+    foodsContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        marginTop: 5,
+        justifyContent: 'space-between'
+    },
+
+    foodsContainer1: {
+        flex: 1,
+        flexDirection: 'row',
+        marginTop: 164,
+        justifyContent: 'space-between'
     },
 });
