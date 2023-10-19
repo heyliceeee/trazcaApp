@@ -1,7 +1,8 @@
-import { View, StyleSheet, Text, Platform, ImageBackground } from "react-native";
+import { View, StyleSheet, Text, Platform, ImageBackground, Image, ScrollView } from "react-native";
 
 import { BlackOverlay } from "./components/blackOverlay";
 import FoodContainer from "./components/foodContainer";
+import CommentContainer from "./components/commentContainer";
 
 
 const image = { uri: 'https://images.unsplash.com/photo-1550984754-8d1b067b0239?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1146&q=80' };
@@ -9,7 +10,7 @@ const image = { uri: 'https://images.unsplash.com/photo-1550984754-8d1b067b0239?
 
 export function Home({ navigation }) {
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <View>
                 <Text style={styles.title}>Promoção da semana</Text>
 
@@ -31,7 +32,7 @@ export function Home({ navigation }) {
 
                     <View style={styles.moreContainer}>
                         <Text style={styles.moreSubtitle}>ver todas</Text>
-                        <Text style={styles.moreSubtitle}> >></Text>
+                        <Text style={styles.moreSubtitle}> &gt;&gt;</Text>
                     </View>
                 </View>
 
@@ -54,10 +55,19 @@ export function Home({ navigation }) {
                         title="Double CheeseBurger" subtitle="McDonald's" price="1,50€" colorStar1="#ffc90c" colorStar2="#ffc90c" colorStar3="#ffc90c" colorStar4="#ffc90c" colorStar5="#ffc90c"
                     />
                 </View>
-
             </View>
 
-        </View>
+            <View style={styles.chefContainerText}>
+                <Text style={styles.chefContainerTitle}>Os clientes recomendam</Text>
+            </View>
+
+            <ScrollView horizontal={true} showsHorizontalScrollIndicator={true} style={styles.commentsContainer}>
+                <CommentContainer username='Alice Dias' comment='O Double ChesseBurger estava delicioso!' img={{uri: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=988&q=80'}}/>
+                <CommentContainer username='Bruno Pinheiro' comment='O SteakHouse estava delicioso, mas é demasiado pequeno para mim.' img={{uri: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80'}}/>
+                <CommentContainer username='Francisco Guimarães' comment='A Pizza Crocante estava deliciosa, pena que seja preciso doar um rim para a pagar.' img={{uri: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'}}/>
+                <CommentContainer username='Matilde Dias' comment='O Double CheeseBurger estava delicioso, mas quando chego a casa continuo com fome.' img={{uri: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'}}/>
+            </ScrollView>
+        </ScrollView>
     );
 }
 
@@ -150,7 +160,7 @@ const styles = StyleSheet.create({
 
     chefContainerText: {
         flexDirection: 'row',
-        marginTop: 15,
+        marginTop: 25,
         marginBottom: 2,
         alignItems: 'center'
     },
@@ -183,7 +193,14 @@ const styles = StyleSheet.create({
     foodsContainer1: {
         flex: 1,
         flexDirection: 'row',
-        marginTop: 164,
-        justifyContent: 'space-between'
+        marginTop: 5,
+        marginBottom: 0,
+        justifyContent: 'space-between',
+    },
+
+    commentsContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        marginTop: 5
     },
 });
