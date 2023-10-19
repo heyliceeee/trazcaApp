@@ -10,6 +10,9 @@ export function BlackOverlay(){
 const styles = StyleSheet.create({
     container: {
         ...StyleSheet.absoluteFill,
-        backgroundColor: 'rgba(0, 0, 0, 0.4)'
+        backgroundColor: 'rgba(0, 0, 0, 0.4)',
+        borderWidth: 1,
+        borderRadius: 4,
+        //borderColor: '#A1A1A1',
     },
 });
