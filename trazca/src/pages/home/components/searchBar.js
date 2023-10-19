@@ -17,7 +17,7 @@ export default function SearchBar() {
             <TextInput placeholder="Pesquise a sua comida favorita..." style={styles.input}
                 placeholderTextColor="#A1A1A1"
                 numberOfLines={1}
-                keyboardType='defaul'
+                keyboardType='default'
                 value={search}
                 onChangeText={(search) => setSearch(search)}
             />
