@@ -1,4 +1,4 @@
-# Traz Cá - App de Delivery de Comida
+# Traz Cá - Food Delivery App
 
 
 
@@ -11,44 +11,45 @@
 - React Navigation (stack)
 
 
-## Objetivo
-A Traz Cá conecta pessoas famintas a uma variedade de restaurantes locais de maneira rápida, conveniente e confiável.
+## Goal
+"Traz Cá" connects hungry people to a variety of local restaurants quickly, conveniently and reliably.
 
-O objetivo da app é criar uma plataforma mobile para iOS e Android que facilite o processo de pedido de comida, promovendo uma experiência fluida entre restaurantes e clientes, incentivando o comércio local e proporcionando uma solução de refeição conveniente para os utilizadores.
+The app's objective is to create a mobile platform for iOS and Android that facilitates the food ordering process, promoting a fluid experience between restaurants and customers, encouraging local commerce and providing a convenient meal solution for users.
 
 
-## Funcionalidades
-- Autenticação de utilizadores
-- Listagem e Pesquisa de Restaurantes
-- Realização de Pedidos
-- Tracking de Pedidos
-- Feedback do Cliente
+## Features
+- User authentication
+- Restaurant Listing and Search
+- Order Fulfillment
+- Order Tracking
+- Customer Feedback
 
 
 ## Mockups
-### Criar Conta
-O ecrã apresenta uma interface intuitiva para os utilizadores se registarem na nossa plataforma. 
+### Create Account
+The screen presents an intuitive interface for users to register on our platform.
 
-Inclui campos para inserção de email, número de telemóvel e palavra-passe. 
+Includes fields for entering email, phone number and password.
 
-A palavra-passe pode ser visualizada ou ocultada para maior segurança, conforme a preferência do utilizador. 
+The password can be displayed or hidden for greater security, depending on the user's preference.
 
-Para garantir a integridade e segurança dos dados, todos os campos passam por um processo de validação antes de concluir o registo.
+To ensure data integrity and security, all fields go through a validation process before completing the registration.
 
 iOS             |  Android
 :-------------------------:|:-------------------------:
 [<img src="/trazca/assets/mockupsIOS/createAccount.PNG" width="1000" />](/trazca/assets/mockupsIOS/createAccount.PNG) | [<img src="/trazca/assets/mockupsAndroid/createAccount.png" width="1000" />](/trazca/assets/mockupsAndroid/createAccount.png)
 
 
-### Iniciar Sessão
-O ecrã é projetado para uma autenticação rápida e segura dos utilizadores. 
+### Sign In
+The screen is designed for quick and secure user authentication.
 
-Dispõe de campos para inserção de email e palavra-passe. 
+It has fields for entering email and password.
 
-Para conforto e segurança do utilizador, a palavra-passe pode ser alternada entre modos de visualização e ocultação. 
+For user comfort and security, the password can be switched between display and hide modes.
 
-Ambos os campos passam por validações rigorosas para garantir uma entrada correta e segura.
+Both fields undergo rigorous validations to ensure correct and secure entry.
 
 iOS             |  Android
 :-------------------------:|:-------------------------:
 [<img src="/trazca/assets/mockupsIOS/login.PNG" width="1000" />](/trazca/assets/mockupsIOS/login.PNG) | [<img src="/trazca/assets/mockupsAndroid/login.png" width="1000" />](/trazca/assets/mockupsAndroid/login.png)
+
