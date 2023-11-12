@@ -37,8 +37,9 @@ export function Routes() {
                 options={{
                     headerShown: true,
                     headerStyle: { backgroundColor: '#5fb709' },
-                    headerTintColor: '#fff',
-                    headerTitle: 'Carrinho',
+                    headerTitleAlign: 'center',
+                    headerTintColor: "#ffff",
+                    headerTitle: "Carrinho",
                     tabBarShowLabel: true,
                     tabBarLabel: ({ focused, color }) => (<Text style={{ fontSize: focused ? 14 : 12, color: '#ffff' }}>Carrinho</Text>),
                     tabBarIcon: ({ focused, size, color }) => {
@@ -55,8 +56,9 @@ export function Routes() {
                 options={{
                     headerShown: true,
                     headerStyle: { backgroundColor: '#5fb709' },
-                    headerTintColor: '#fff',
-                    headerTitle: 'Pedido',
+                    headerTitleAlign: 'center',
+                    headerTintColor: "#ffff",
+                    headerTitle: "Pedido",
                     tabBarShowLabel: true,
                     tabBarLabel: ({ focused, color }) => (<Text style={{ fontSize: focused ? 14 : 12, color: '#ffff' }}>Pedido</Text>),
                     tabBarIcon: ({ focused, size, color }) => {
@@ -72,8 +74,9 @@ export function Routes() {
                 options={{
                     headerShown: true,
                     headerStyle: { backgroundColor: '#5fb709' },
-                    headerTintColor: '#fff',
-                    headerTitle: 'Perfil',
+                    headerTitleAlign: 'center',
+                    headerTintColor: "#ffff",
+                    headerTitle: "Perfil",
                     tabBarShowLabel: true,
                     tabBarLabel: ({ focused, color }) => (<Text style={{ fontSize: focused ? 14 : 12, color: '#ffff' }}>Perfil</Text>),
                     tabBarIcon: ({ focused, size, color }) => {
