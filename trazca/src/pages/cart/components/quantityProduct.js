@@ -1,25 +1,43 @@
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
+
 
 
 export default function QuantityProduct({ price }) {
+    const [quantity, setQuantity] = useState(1);
+
+    const decreaseQuantity = () => {
+        if (quantity > 1) {
+            setQuantity(quantity - 1);
+        }
+    };
+
+    const increaseQuantity = () => {
+        if (quantity < 10000) {
+            setQuantity(quantity + 1);
+        }
+    };
+
+    const totalPrice = (price * quantity).toFixed(2); // Calculate the total price
+
     return (
         <View style={styles.container}>
             <View style={styles.containerHorizontal}>
-                <Text style={styles.foodPrice}>{price}€</Text>
+                <Text style={styles.foodPrice}>{totalPrice}€</Text>
             </View>
 
             <View style={styles.containerVertical}>
-                <View style={styles.containerMinusPlus}>
+                <TouchableOpacity style={styles.containerMinusPlus} onPress={decreaseQuantity}>
                     <Text style={styles.textMinusPlus}>-</Text>
-                </View>
+                </TouchableOpacity>
 
                 <View style={styles.containerQuantity}>
-                    <Text style={styles.textQuantity}>1</Text>
+                    <Text style={styles.textQuantity}>{quantity}</Text>
                 </View>
 
-                <View style={styles.containerMinusPlus}>
+                <TouchableOpacity style={styles.containerMinusPlus} onPress={increaseQuantity}>
                     <Text style={styles.textMinusPlus}>+</Text>
-                </View>
+                </TouchableOpacity>
             </View>
         </View>
     );
