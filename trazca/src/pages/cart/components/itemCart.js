@@ -32,14 +32,14 @@ export default function ItemCart({ img, title, price, value, setValue }) {
             </View>
 
             <View style={styles.containerNote}>
-                <TextInput style={styles.inputNote} 
-                placeholder="Adicionar uma nota (sem cebola, extra queijo, ...)"
-                placeholderTextColor="#A1A1A1"
-                numberOfLines={1}
-                returnKeyType='next'
-                keyboardType="default"      
-                value={value} 
-                onChangeText={setValue}         
+                <TextInput style={styles.inputNote}
+                    placeholder="Adicionar uma nota (sem cebola, extra queijo, ...)"
+                    placeholderTextColor="#A1A1A1"
+                    numberOfLines={1}
+                    returnKeyType='next'
+                    keyboardType="default"
+                    value={value}
+                    onChangeText={setValue}
                 />
             </View>
         </View>
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginBottom: 5,
+        marginBottom: 10,
     },
 
     containerImg:
