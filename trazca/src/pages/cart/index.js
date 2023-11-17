@@ -62,7 +62,7 @@ export default function Cart({ navigation }) {
                 <Total title="Total" price="35.99" />
             </View>
 
-            <BtnForm onPress={handleSubmit} style={styles.btnSubmit} textBtn="Finalizar Pedido"/>
+            <BtnForm onPress={handleSubmit} style={styles.btnSubmit} textBtn="Finalizar Pedido" />
         </ScrollView>
     );
 }
@@ -92,7 +92,6 @@ const styles = StyleSheet.create({
     inputContainer: {
         flexDirection: 'row',
         height: 42,
-        width: 250,
         borderBottomWidth: 1,
         borderColor: '#A1A1A1',
         paddingBottom: 11,
@@ -100,7 +99,17 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         paddingLeft: 5,
         paddingTop: 15,
-        fontWeight: 'normal'
+        fontWeight: 'normal',
+
+        ...Platform.select({
+            ios: {
+                width: 250,
+            },
+
+            android: {
+                width: 283,
+            }
+        })
     },
 
     btnDiscount: {
@@ -112,18 +121,27 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         alignItems: 'center',
         justifyContent: 'center',
-        marginLeft: 5
+        marginLeft: 5,
     },
 
     btnSubmit: {
         height: 42,
-        width: 350,
         backgroundColor: "#5fb709",
         borderBottomWidth: 1,
         borderColor: '#A1A1A1',
         borderRadius: 4,
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 40
+        marginTop: 40,
+
+        ...Platform.select({
+            ios: {
+                width: 350,
+            },
+
+            android: {
+                width: 380,
+            }
+        })
     }
 });
