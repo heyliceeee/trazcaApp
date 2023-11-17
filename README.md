@@ -53,3 +53,34 @@ iOS             |  Android
 :-------------------------:|:-------------------------:
 [<img src="/trazca/assets/mockupsIOS/login.PNG" width="1000" />](/trazca/assets/mockupsIOS/login.PNG) | [<img src="/trazca/assets/mockupsAndroid/login.png" width="1000" />](/trazca/assets/mockupsAndroid/login.png)
 
+
+### Home
+The platform's initial screen offers a practical and welcoming experience to users. 
+
+It features a prominent search bar to explore gastronomic options, highlights the weekly promotional item, and showcases chef-recommended dishes, each accompanied by a photo, name, restaurant, star rating, and price.
+
+Additionally, there's a section for customer feedback on products, aiding informed decision-making. 
+
+The intuitive and interactive layout ensures an engaging experience right from the start.
+
+iOS             |  Android
+:-------------------------:|:-------------------------:
+[<img src="/trazca/assets/mockupsIOS/home.PNG" width="1000" />](/trazca/assets/mockupsIOS/home.PNG) | [<img src="/trazca/assets/mockupsAndroid/home.png" width="1000" />](/trazca/assets/mockupsAndroid/home.png)
+
+
+### Cart
+The cart screen presents a clear and intuitive display of selected products, each with a corresponding photo and name. 
+
+It offers options to add personalized notes, adjust quantities, or remove items from the cart. 
+
+It displays the subtotal, delivery fees, and automatically calculates the total to be paid. 
+
+It includes space for discount codes, allowing the application of promotions. 
+
+It concludes with a 'Place Order' button, facilitating the completion of the purchase. 
+
+This design combines practicality with data security, providing users with a complete and secure experience.
+
+iOS             |  Android
+:-------------------------:|:-------------------------:
+[<img src="/trazca/assets/mockupsIOS/cart.PNG" width="1000" />](/trazca/assets/mockupsIOS/cart.PNG) | [<img src="/trazca/assets/mockupsAndroid/cart.png" width="1000" />](/trazca/assets/mockupsAndroid/cart.png)
